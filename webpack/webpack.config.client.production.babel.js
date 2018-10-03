@@ -37,7 +37,8 @@ function recursiveIssuer(m) {
   }
 }
 
-// configuration.mode = 'production',
+// source maps appear working in chrome and firefox
+
 configuration.devtool = 'source-map';
 // configuration.devtool = 'hidden-source-map'; // stack trace info only
 
@@ -222,6 +223,7 @@ configuration.plugins.push(
 
   new CleanWebpackPlugin([bundleAnalyzerPath,visualizerPath,assetsPath,serverPath], { root: configuration.context }),
 
+  // testing css caching appears to bve working 
   new MiniCssExtractPlugin({
     // filename: '[name].css',
     // For long term caching (according to 'mini-css-extract-plugin' docs)

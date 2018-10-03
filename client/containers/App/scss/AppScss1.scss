@@ -5,9 +5,18 @@
 // min-height: #{'calc(100vh - ' + calculate-rem($footer-height) + ')'}; // exclude the height of footer
 // min-height: #{'calc(100vh - ' + calculate-rem(277px) + ')'};
 
+// .app {
+//   .brand {
+//     color: #00BFFF;
+//   }
+//   nav :global(.fa) {
+//     padding-top: 4px;
+//   }
+// }
+
 .app {
   .brand {
-    color: #00BFFF;
+    color: #009900;
   }
   nav :global(.fa) {
     padding-top: 4px;
