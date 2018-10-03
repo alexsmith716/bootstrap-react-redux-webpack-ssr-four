@@ -1,0 +1,75 @@
+// --------------------------------------------------------------------------------
+// CUSTOM FONTS ADDED
+// --------------------------------------------------------------------------------
+
+@font-face {
+  font-family: 'Old English';
+  src: url('#{$font-assets-url-path}/old-english.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'MontserratLight';
+  src: url('#{$font-assets-url-path}/MontserratLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'OpenSans-Bold-webfont';
+  src: url('#{$font-assets-url-path}/OpenSans-Bold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'OpenSans-Italic-webfont';
+  src: url('#{$font-assets-url-path}/OpenSans-Italic-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'norwester';
+  src: url('#{$font-assets-url-path}/norwester.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'philosopher-bold-webfont';
+  src: url('#{$font-assets-url-path}/philosopher-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'lobster-v20-latin-regular';
+  src: url('#{$font-assets-url-path}/lobster-v20-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'sourcesanspro-regular-webfont';
+  src: url('#{$font-assets-url-path}/sourcesanspro-regular-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'roboto-mono-v4-latin-regular';
+  src: url('#{$font-assets-url-path}/roboto-mono-v4-latin-regular.woff') format('woff');
+}
+
+// ================
+
+// @font-face {
+//   font-family: 'aller-light';
+//   src: url('#{$font-assets-url-path}/aller-light.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'FiraSans-BookItalic';
+//   src: url('#{$font-assets-url-path}/FiraSans-BookItalic.woff') format('woff');
+// }
+
+// @font-face {
+//   font-family: 'FiraMono-Regular';
+//   src: url('#{$font-assets-url-path}/FiraMono-Regular.woff') format('woff');
+// }
+
+// @font-face {
+//   font-family: 'OpenSans-Light';
+//   src: url('#{$font-assets-url-path}/OpenSans-Light.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Scada-Regular';
+//   src: url('#{$font-assets-url-path}/Scada-Regular.ttf') format('truetype');
+// }

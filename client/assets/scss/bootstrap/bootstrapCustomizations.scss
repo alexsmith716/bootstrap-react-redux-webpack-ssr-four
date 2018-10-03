@@ -1,0 +1,18 @@
+
+// Override Bootstrap styles that you can't modify via variables here
+// This gets loaded after bootstrap/variables is loaded, so you can refer to
+// bootstrap variables configured by bootstrap. For example, the _variables.scss contains:
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// ------------- Modify (hue) default '$btn-primary-bg' variable ------------
+// --------------------------------------------------------------------------
+
+$btn-primary-bg: adjust-hue(theme-color("primary"), +20deg);
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// ------------- Modify (darken) default '$dropdown-bg' variable ------------
+// --------------------------------------------------------------------------
+
+$dropdown-bg: darken($dropdown-bg, 20%);

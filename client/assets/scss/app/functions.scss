@@ -1,0 +1,41 @@
+
+// --------------------------------------------------------------------------------
+// CALCULATE AND RETURN PIXEL TO REM
+// --------------------------------------------------------------------------------
+
+// $font-size-browser-default: 16px !default;
+
+@function test-number-unit($testSize) {
+
+  @if (type-of($testSize) == number) {
+
+    @if (unit($testSize) != "px") {
+
+      @error "`#{$testSize}` needs to be a PIXEL value.";
+
+    } 
+
+  } @else {
+
+    @error "`#{$testSize}` needs to be a NUMBER.";
+
+  }
+
+  @return $testSize;
+
+}
+
+// --------------------------------------------------------------------------------
+
+@function calculate-rem($size) {
+
+  $testedSize: test-number-unit($size);
+
+  $returnedValue: $testedSize / $font-size-browser-default;
+
+  @return #{$returnedValue}rem;
+
+}
+
+// --------------------------------------------------------------------------------
+

@@ -1,0 +1,10 @@
+
+.infoBar {
+  @include philosopher-bold-webfont-font;
+
+  .message {
+    color: #EE2C2C;
+    @include roboto-mono-v4-latin-regular-font;
+    font-size: small;
+  }
+}

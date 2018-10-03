@@ -1,0 +1,53 @@
+@import "../app/functions.scss";
+
+@import "../app/variables.scss";
+
+@import "../app/fonts.scss";
+
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs
+
+// Customize Bootstrap variables that get imported before the original Bootstrap variables.
+// Thus original Bootstrap variables can depend on values from here.
+
+// -----------------------------------------------------------
+// -----------------------------------------------------------
+// ------------ Override default '$body-bg' variable ---------
+// -----------------------------------------------------------
+
+// $body-bg: $white !default;
+$body-bg: #F7F7F7; // gray 97
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// ------------ Override default '$font-family-sans-serif' variable ---------
+// --------------------------------------------------------------------------
+
+// Override default Bootstrap '$font-family-sans-serif' variable with "Old English"
+// $font-family-sans-serif: "Old English", Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// '@font-face' rule loads font located at '$font-assets-url-path' and overrides default '$font-family-sans-serif'
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// ------------ Override default '$font-size-base' variable -----------------
+// --------------------------------------------------------------------------
+
+// Bootstrap's '1rem' Assumes the browser default, typically '16px'
+// $font-size-base: 1rem !default; // 'font-size' variable >>>>> '_variables.scss'
+
+// .875rem = 14px / 16px
+// changing default font size from (1rem/16px) to (.875rem/14px)
+
+$font-size-base: .875rem;
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// ----------------- Override various default color variables ------------------
+// --------------------------------------------------------------------------
+
+$navbar-dark-color: #C6E2FF;
+// $input-color: #9B30FF;
+// $input-border-color: #FFFF00;
+$dropdown-bg: #FFFF00;  // <<<<<<<<<<<<< yellow: FFFF00
+// $dropdown-bg: #FFFAFA;  // <<<<<<<<<<<<< snow: FFFAFA

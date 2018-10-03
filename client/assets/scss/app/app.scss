@@ -1,0 +1,240 @@
+
+// global styling --------------------------------------
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height plus a 'margin-top: 15px' */
+  margin-bottom: calculate-rem($footer-height + $footer-margin-top);
+}
+
+#main-nav .navbar-collapse .navbar-nav .nav-item .nav-link {
+  cursor: pointer;
+}
+
+h2 {
+  @include tester-font2;
+}
+
+hr {
+  border-color: $secondary;
+}
+
+hr.light {
+  border-color: $light;
+}
+
+.fa-padding {
+  padding-left: calculate-rem(4px);
+  padding-right: calculate-rem(4px);
+}
+
+.button-facebook,
+.button-google {
+  line-height: 1.2;
+  width: calculate-rem(116px);
+  height: calculate-rem(40px);
+  border-radius: calculate-rem(3px);
+  border: calculate-rem(1px) solid #B8B8B8;
+  background-color: #ffffff;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.button-facebook {
+  color: #3b5998;
+}
+
+.button-facebook i {
+  font-size: calculate-rem(20px);
+  margin-right: calculate-rem(10px);
+  padding-bottom: calculate-rem(1px);
+}
+
+.button-google {
+  color: #555555;
+}
+
+.button-google img {
+  width: calculate-rem(19px);
+  margin-right: calculate-rem(10px);
+  padding-bottom: calculate-rem(1px);
+}
+
+.button-facebook:hover,
+.button-google:hover {
+  border-color: #EEEEE0;
+}
+
+.btn-width-one-quarter {
+  width: 25%;
+}
+
+.btn-width-one-third {
+  width: 33%;
+}
+
+.btn-width-one-half {
+  width: 50%;
+}
+
+.btn-width-three-quarters {
+  width: 75%;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-size-smaller-90 {
+  font-size: 90%;
+}
+
+// --------------------------------------------------------------------------------
+// GLOBAL FONTS
+// --------------------------------------------------------------------------------
+
+.font-montserratlight {
+  @include montserratlight-font;
+}
+
+// .font-bootstrap-default {
+//   @include bootstrap-default-font;
+// }
+
+.font-opensans-bold-webfont {
+  @include opensans-bold-webfont-font;
+}
+
+.font-opensans-italic-webfont {
+  @include opensans-italic-webfont-font;
+}
+
+.font-norwester {
+  @include norwester-font;
+}
+
+.font-old-english {
+  @include old-english-font;
+}
+
+.font-philosopher-bold-webfont {
+  @include philosopher-bold-webfont-font;
+}
+
+.font-lobster-v20-latin-regular {
+  @include lobster-v20-latin-regular-font;
+}
+
+.font-sourcesanspro-regular-webfont {
+  @include sourcesanspro-regular-webfont-font;
+}
+
+.font-roboto-mono-v4-latin-regular {
+  @include roboto-mono-v4-latin-regular-font;
+}
+
+// -------------------------------------------------------------
+// GLOBAL BACKGROUNDS
+// -------------------------------------------------------------
+
+.bg-color-slategray {
+  background-color: #C6E2FF;
+}
+
+.bg-color-olivedrab-2 {
+  background-color: #B3EE3A;
+}
+
+.bg-color-mediumorchid-1 {
+  background-color: #E066FF;
+}
+
+.bg-color-turquoise-1 {
+  background-color: #00F5FF;
+}
+
+.bg-color-darkgoldenrod-1 {
+  background-color: #FFB90F;
+}
+
+.bg-color-lightcoral {
+  background-color: #F08080;
+}
+
+.bg-color-mediumspringgreen {
+  background-color: #00FA9A;
+}
+
+.bg-color-plum {
+  background-color: #DDA0DD;
+}
+
+.bg-color-banana {
+  background-color: #E3CF57;
+}
+
+// -------------------------------------------------------------
+// GLOBAL COLORS
+// -------------------------------------------------------------
+
+.color-purple {
+  color: #9B30FF;
+}
+
+.color-olive {
+  color: #808000;
+}
+
+.color-crimson {
+  color: #DC143C;
+}
+
+.color-gold {
+  color: #FFD700;
+}
+
+.color-lightblue {
+  color: #BFEFFF;
+}
+
+.color-lavender {
+  color: #E6E6FA;
+}
+
+.color-turquoise {
+  color: #00F5FF;
+}
+
+.color-yellow {
+  color: #FFFF00;
+}
+
+.color-springgreen {
+  color: #00EE76;
+}
+
+.color-azure {
+  color: #F0FFFF;
+}
+
+.color-darkgray {
+  color: #A9A9A9;
+}
+
+.color-salmon {
+  color: #FF8C69;
+}
+
+.color-orangered {
+  color: #FF4500;
+}

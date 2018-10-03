@@ -1,0 +1,13 @@
+[ignore]
+.*/node_modules/.*
+.*/build/public/assets/.*
+.*/build/server/.*
+
+[include]
+.*/bin/.*
+
+[libs]
+
+[options]
+esproposal.decorators=ignore
+suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line

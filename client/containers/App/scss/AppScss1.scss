@@ -1,0 +1,46 @@
+
+// Bootstrap Navbar rendered height affected by size of the content (brand, links, text, padding)
+// Viewport Height (vh) – A percentage of the full viewport height
+// 10vh will resolve to 10% of the current viewport height
+// min-height: #{'calc(100vh - ' + calculate-rem($footer-height) + ')'}; // exclude the height of footer
+// min-height: #{'calc(100vh - ' + calculate-rem(277px) + ')'};
+
+.app {
+  .brand {
+    color: #00BFFF;
+  }
+  nav :global(.fa) {
+    padding-top: 4px;
+  }
+}
+
+%footerHeight {
+  height: calculate-rem(100px);
+}
+
+.appContent {
+  margin-top: calculate-rem(53px);
+}
+
+.appInfoBar {
+  margin-top: calculate-rem(15px);
+}
+
+.notifs {
+  margin: calculate-rem(15px) 0;
+  color: #F0F8FF;
+  border: 3px solid #F0F8FF;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #0000FF;
+  // @extend %footerHeight;
+  height: calculate-rem($footer-height);
+  .flexContainer {
+    color: #FFFFFF;
+    @include lobster-v20-latin-regular-font;
+  }
+}

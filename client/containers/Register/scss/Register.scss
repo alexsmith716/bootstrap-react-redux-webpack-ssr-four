@@ -1,0 +1,28 @@
+
+.registerContainer {
+  padding-top: calculate-rem(15px);
+  padding-bottom: calculate-rem(15px);
+  // padding-bottom: calculate-rem(40px);
+  // background-color: #009900;
+
+  .register {
+    width: calculate-rem(650px);
+  
+    .formTitle {
+      font-size: calculate-rem(24px);
+      color: #00008B;
+      text-align: center;
+      width: 100%;
+    }
+  
+    .formContainer {
+      padding: calculate-rem(15px);
+      border: calculate-rem(1px) solid #d8dee2;
+      border-radius: calculate-rem(6px);
+      background-color: #ffffff;
+
+    }
+
+  }
+
+}
