@@ -74,8 +74,20 @@ configuration.entry.main.push(
 //  * using 'chunkhash' as opposed to 'hash' because 'hash' returns hash for entire build (the same hash applied to all chunks)
 //  * using 'chunkhash' as opposed to 'hash' because with 'hash' if any portion of the build changes, this changes as well (all chunk's hashs' change)
 
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// finish 'key-points' 'Code Splitting' on webpack prod && quickly do a 'key-points' for dev config
+// explain usage of 'optimization.splitChunks.cacheGroups.vendors'
+
 // 2) Code Splitting:
 //  * Entry Point Split: Manually split code using entry configuration (initial split of code at entry ('main' bundle))
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
 
 // ---------------------------------------------------------------------------------------
 
@@ -225,10 +237,16 @@ configuration.plugins.push(
 
   // testing css caching appears to bve working 
   new MiniCssExtractPlugin({
-    // filename: '[name].css',
     // For long term caching (according to 'mini-css-extract-plugin' docs)
+    // filename: '[name].[contenthash].css'
+    // ---------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------
+    // need to resolve the '.css.css' test in 'Html.js' for returned RL bundles
     filename: '[name].[contenthash].css.css',
-    // filename: '[name].[contenthash].css',
+    // ---------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------
     // chunkFilename: '[name].[contenthash].chunk.css.css',
   }),
 
@@ -271,15 +289,15 @@ configuration.plugins.push(
   //   navigateFallback: '/assets/index.html',
   // }),
 
-  // new BundleAnalyzerPlugin({
-  //   analyzerMode: 'static',
-  //   reportFilename: '../../analyzers/bundleAnalyzer/client-development.html',
-  //   // analyzerMode: 'server',
-  //   // analyzerPort: 8888,
-  //   // defaultSizes: 'parsed',
-  //   openAnalyzer: false,
-  //   generateStatsFile: false
-  // })
+  new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+    reportFilename: '../../analyzers/bundleAnalyzer/client-development.html',
+    // analyzerMode: 'server',
+    // analyzerPort: 8888,
+    // defaultSizes: 'parsed',
+    openAnalyzer: false,
+    generateStatsFile: false
+  })
 );
 
 // console.log('>>>>>>>>>>>>>>>>>>> WCCPB CLIENT configuration: ', configuration)
