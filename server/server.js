@@ -131,8 +131,8 @@ export default function (parameters) {
   app.set('port', port);
 
   app.use(morgan('dev'));
-  app.use(helmet());
-  app.use(helmet.xssFilter());
+  // app.use(helmet());
+  // app.use(helmet.xssFilter());
   // app.use(headers);
 
   // #########################################################################
@@ -146,25 +146,26 @@ export default function (parameters) {
   app.use(cookieParser()); // parse cookie header and populate req.cookies
   app.use(compression()); // compress request response bodies
 
-  app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+  // app.use(express.static(path.join(__dirname, '..', 'build', 'public')));
+  // app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
   app.use(favicon(path.join(__dirname, '../public/static/favicon', 'favicon.ico')));
   app.use('/manifest.json', (req, res) => res.sendFile(path.join(__dirname, '../public/static/manifest/manifest.json')));
 
   // #########################################################################
 
-  app.use('/service-worker.js', (req, res, next) => {
+  app.use('/assets/service-worker.js', (req, res, next) => {
     console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ service-worker $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     res.setHeader('Service-Worker-Allowed', '/');
     res.setHeader('Cache-Control', 'no-store');
     // res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Content-Type', 'application/javascript');
+    // res.setHeader('Content-Type', 'application/javascript');
     // res.setHeader('Content-Type', 'text/javascript');
     return next();
   });
 
   // #########################################################################
 
-  app.use('/dlls/:dllName.js', express.static(path.join(__dirname, '../build/public/assets/dlls/:dllName.js')), (req, res, next) => {
+  app.use('/assets/dlls/:dllName.js', express.static(path.join(__dirname, '../build/public/assets/dlls/:dllName.js')), (req, res, next) => {
     console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DLLs $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     fs.access(
       path.join(__dirname, '..', 'build', 'public', 'assests', 'dlls', `${req.params.dllName}.js`),
@@ -173,7 +174,8 @@ export default function (parameters) {
     );
   });
 
-  // app.use(express.static(path.join(__dirname, '..', 'build', 'public')));
+  app.use(express.static(path.join(__dirname, '..', 'build', 'public')));
+  app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
   // #########################################################################
 
   // identify the originating IP address through an HTTP proxy or load balancer

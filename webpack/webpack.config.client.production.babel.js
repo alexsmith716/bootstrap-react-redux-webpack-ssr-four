@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { clientConfiguration } = require('universal-webpack');
@@ -238,15 +238,7 @@ configuration.plugins.push(
   // testing css caching appears to bve working 
   new MiniCssExtractPlugin({
     // For long term caching (according to 'mini-css-extract-plugin' docs)
-    // filename: '[name].[contenthash].css'
-    // ---------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------
-    // need to resolve the '.css.css' test in 'Html.js' for returned RL bundles
-    filename: '[name].[contenthash].css.css',
-    // ---------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------
+    filename: '[name].[contenthash].css'
     // chunkFilename: '[name].[contenthash].chunk.css.css',
   }),
 
@@ -274,20 +266,19 @@ configuration.plugins.push(
   // SWPrecacheWebpackPlugin is a webpack plugin for using service workers to cache your external project dependencies. 
   // It will generate a service worker file using sw-precache and add it to your build directory.
 
-  // new SWPrecacheWebpackPlugin({
+  new SWPrecacheWebpackPlugin({
+    cacheId: 'bootstrap-react-redux-webpack-ssr-four',
+    filename: 'service-worker.js',
+    // maximumFileSizeToCacheInBytes: 8388608,
 
-  //   cacheId: 'bootstrap-react-redux-webpack-ssr-two',
-  //   filename: 'service-worker.js',
-  //   maximumFileSizeToCacheInBytes: 8388608,
+    staticFileGlobs: [`${path.dirname(configuration.output.path)}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
+    stripPrefix: path.dirname(configuration.output.path),
 
-  //   staticFileGlobs: [path.dirname(configuration.output.path) + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}'],
-
-  //   stripPrefix: path.dirname(configuration.output.path),
-
-  //   directoryIndex: '/',
-  //   verbose: true,
-  //   navigateFallback: '/assets/index.html',
-  // }),
+    directoryIndex: '/',
+    verbose: true,
+    // skipWaiting: true,
+    navigateFallback: '/assets/index.html'
+  }),
 
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',
