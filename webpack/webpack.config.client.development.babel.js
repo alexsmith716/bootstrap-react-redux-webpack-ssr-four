@@ -36,8 +36,6 @@ if (process.env.WEBPACK_DLLS === '1' && !validDLLs) {
 
 // ==============================================================================================
 
-// configuration.name = '',
-
 configuration.mode = 'development';
 
 // https://webpack.js.org/guides/development/#source-maps
@@ -46,6 +44,7 @@ configuration.mode = 'development';
 configuration.devtool = 'inline-source-map';
 
 // specifies the name of each output entry file
+// using 'hash' since this is dev
 configuration.output.filename = '[name].[hash].js';
 // specifies the name of each (non-entry) chunk files
 configuration.output.chunkFilename = '[name].[chunkhash].chunk.js';

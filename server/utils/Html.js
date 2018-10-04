@@ -80,6 +80,7 @@ const Html = ({ assets, store, content, bundles }) => {
         {assets.javascript && <script src={assets.javascript.main} charSet="utf-8" />}
 
         {bundles.map(bundle => testCss.test(bundle) && bundle && <script src={config.assetsPath + bundle.file} key={bundle.id} />)}
+        {/* {bundles.map(bundle => bundle && <script src={config.assetsPath + bundle.file} key={bundle.id} />)} */}
 
         {/* (will be present only in development mode) */}
         {assets.styles && Object.keys(assets.styles).length === 0 ? (

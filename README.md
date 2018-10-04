@@ -12,7 +12,18 @@ So, I spent the last few days going over monorepo's, Lerna, Babel, ES5 && ES6. W
 
 ### To-Do:
 
-  1) Implement `eslint`, `chai` && `jest`
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// finish 'key-points' 'Code Splitting' on webpack prod && quickly do a 'key-points' for dev config
+// explain usage of 'optimization.splitChunks.cacheGroups.vendors' in webpack prod
+//
+// need to resolve the '.css.css' test in 'Html.js' for returned RL bundles
+//
+// move on to 'bigger picture' usage of assets in SSR && the SSR process itself
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 ### Babel:
 
