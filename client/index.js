@@ -205,59 +205,71 @@ initSocket();
 
   // ==============================================================================================
 
-  // if (__DEVTOOLS__ && !window.devToolsExtension) {
+  if (__DEVTOOLS__ && !window.devToolsExtension) {
 
-  //   console.log('>>>>>>>>>>>>>>>>>>> CLIENT.JS > __DEVTOOLS__ && NO window.devToolsExtension');
+    console.log('>>>>>>>>>>>>>>>>>>> CLIENT.JS > __DEVTOOLS__ && NO window.devToolsExtension');
 
-  //   const devToolsDest = document.createElement('div');
-  //   window.document.body.insertBefore(devToolsDest, null);
-  //   const DevTools = require('./containers/DevTools/DevTools').default;
+    const devToolsDest = document.createElement('div');
+    window.document.body.insertBefore(devToolsDest, null);
+    const DevTools = require('./containers/DevTools/DevTools').default;
 
-  //   ReactDOM.hydrate(
-  //     <Provider store={store}>
-  //       <DevTools />
-  //     </Provider>,
-  //     devToolsDest
-  //   );
+    ReactDOM.hydrate(
+      <Provider store={store}>
+        <DevTools />
+      </Provider>,
+      devToolsDest
+    );
+  }
 
-  // }
+  if (!__DEVELOPMENT__) {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ 1111111 <<<<<<<<<<<<<');
+  } else {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ 222222 <<<<<<<<<<<<<');
+  }
+  if ('serviceWorker' in navigator) {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator 111111 <<<<<<<<<<<<<');
+  } else {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator 222222 <<<<<<<<<<<<<');
+  }
 
-  // if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
-  //   console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<');
-  //   try {
-  //     
-  //     const registration = await navigator.serviceWorker.register('/service-worker.js');
+  if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<');
+    try {
+      
+      const registration = await navigator.serviceWorker.register('/service-worker.js', { scope: '/' });
 
-  //     console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<XX: ', registration);
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<XX: ', registration);
 
-  //     registration.onupdatefound = () => {
+      registration.onupdatefound = () => {
 
-  //       const installingWorker = registration.installing;
+        const installingWorker = registration.installing;
 
-  //       installingWorker.onstatechange = () => {
-  //         switch (installingWorker.state) {
-  //           case 'installed':
-  //             if (navigator.serviceWorker.controller) {
+        installingWorker.onstatechange = () => {
+          switch (installingWorker.state) {
+            case 'installed':
+              if (navigator.serviceWorker.controller) {
 
-  //               console.log('New or updated content is available.');
-  //             } else {
+                console.log('New or updated content is available.');
+              } else {
 
-  //               console.log('Content is now available offline!');
-  //             }
-  //             break;
-  //           case 'redundant':
-  //             console.error('The installing service worker became redundant.');
-  //             break;
-  //           default:
-  //         }
-  //       };
-  //     };
-  //   } catch (error) {
-  //     console.log('Error registering service worker: ', error);
-  //   }
+                console.log('Content is now available offline!');
+              }
+              break;
+            case 'redundant':
+              console.error('The installing service worker became redundant.');
+              break;
+            default:
+          }
+        };
+      };
+    } catch (error) {
+      console.log('Error registering service worker: ', error);
+    }
 
-  //   await navigator.serviceWorker.ready;
-  //   console.log('Service Worker Ready');
-  // }
+    await navigator.serviceWorker.ready;
+    console.log('Service Worker Ready');
+  } else {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator NOOOO!!! <<<<<<<<<<<<<');
+  }
 
 })();

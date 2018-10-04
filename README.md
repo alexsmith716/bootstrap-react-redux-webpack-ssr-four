@@ -12,6 +12,14 @@ So, I spent the last few days going over monorepo's, Lerna, Babel, ES5 && ES6. W
 
 ### To-Do:
 
+Loading failed for the <script> with source “http://localhost:3000/undefinedabout.49a9bf77b5e592f27bf6.css”.
+
+Refused to execute script from 'http://localhost:3000/undefinedabout.49a9bf77b5e592f27bf6.css' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.
+
+about:1 Refused to execute script from 'http://localhost:3000/undefinedabout.619f63ed2c3ab0f63343.chunk.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.
+
+about:1 Refused to execute script from 'http://localhost:3000/undefinedabout.619f63ed2c3ab0f63343.chunk.js.map' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
