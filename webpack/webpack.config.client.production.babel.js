@@ -235,7 +235,6 @@ configuration.plugins.push(
 
   new CleanWebpackPlugin([bundleAnalyzerPath,visualizerPath,assetsPath,serverPath], { root: configuration.context }),
 
-  // testing css caching appears to bve working 
   new MiniCssExtractPlugin({
     // For long term caching (according to 'mini-css-extract-plugin' docs)
     filename: '[name].[contenthash].css'
