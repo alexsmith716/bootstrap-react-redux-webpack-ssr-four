@@ -47,8 +47,8 @@
     // font-size: 3.8rem;
     font-size: calculate-rem(61px);
     font-weight: 600;
-    // @include color-dodgerblue-4;
-    @include color-turquoise;
+    @include color-dodgerblue-4;
+    // @include color-turquoise;
     @include tester-font3;
   }
 

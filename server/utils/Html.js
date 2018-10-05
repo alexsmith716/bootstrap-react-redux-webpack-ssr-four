@@ -15,9 +15,7 @@ const Html = ({ assets, store, content, bundles }) => {
   const head = Helmet.renderStatic();
 
   return (
-
     <html lang="en-US">
-
       <head>
         {/* (>>>>>>> META <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<) */}
         {head.base.toComponent()}
@@ -39,8 +37,8 @@ const Html = ({ assets, store, content, bundles }) => {
         <link rel="manifest" href="/manifest.json" />
 
         {/* (>>>>>>> STYLES - will be physically present only in production) */}
-        {assets.styles &&
-          Object.keys(assets.styles).map(style => (
+        {assets.styles 
+          && Object.keys(assets.styles).map(style => (
             <link
               href={assets.styles[style]}
               key={style}
@@ -70,9 +68,9 @@ const Html = ({ assets, store, content, bundles }) => {
           ></script>
         )}
 
-        {assets.javascript && <script src={assets.javascript.manifest} charSet="UTF-8" />}
+        {/* {assets.javascript && <script src={assets.javascript.runtime} charSet="UTF-8" />} */}
 
-        {assets.javascript && <script src={assets.javascript.vendor} charSet="UTF-8" />}
+        {/* {assets.javascript && <script src={assets.javascript.vendor} charSet="UTF-8" />} */}
 
         { __DLLS__ && <script key="dlls__vendor" src="/assets/dlls/dll__vendor.js" charSet="UTF-8" /> }
 
