@@ -2,7 +2,7 @@
 export default function headers(req, res, next) {
   // Request headers +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // identify the originating IP address through an HTTP proxy or load balancer
-  res.header('X-Forwarded-For', req.ip);
+  // res.header('X-Forwarded-For', req.ip);
 
   // Response headers ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // Specifying which web sites can participate in CORS
@@ -36,3 +36,6 @@ export default function headers(req, res, next) {
 // xssFilter:               adds some small XSS protections
 
 // https://helmetjs.github.io/docs/
+
+// res.header('X-Content-Type-Options', 'nosniff');
+// res.header('X-Frame-Options', 'deny');

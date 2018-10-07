@@ -51,7 +51,7 @@ import { getChunks, waitChunks } from './utils/chunks';
 // ######## ---------- SPECIFY LOADABLE COMPONENTS PATH --------------- ######
 // ###########################################################################
 
-const loadableChunksPath = path.join(__dirname, '..', 'public', 'assets', 'loadable-chunks.json');
+const loadableChunksPath = path.join(__dirname, '..', 'static', 'dist', 'loadable-chunks.json');
 // /Users/../bootstrap-redux-react-loadable-webpack-dllplugin/build/public/assets/loadable-chunks.json
 console.log('>>>>>>>>>>>>>>>>> SERVER > loadableChunksPath +++++++++: ', loadableChunksPath);
 
@@ -146,30 +146,28 @@ export default function (parameters) {
   app.use(cookieParser()); // parse cookie header and populate req.cookies
   app.use(compression()); // compress request response bodies
 
-  // app.use(express.static(path.join(__dirname, '..', 'build', 'public')));
-  // app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
-  app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
-  app.use(favicon(path.join(__dirname, '../public/static/favicon', 'favicon.ico')));
-  app.use('/manifest.json', (req, res) => res.sendFile(path.join(__dirname, '../public/static/manifest/manifest.json')));
+  app.use(express.static(path.join(__dirname, '..', 'static')));
+  app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')))
+  app.use('/manifest.json', (req, res) => res.sendFile(path.join(__dirname, '..', 'static', 'manifest.json')));
 
   // #########################################################################
 
-  app.use('/service-worker.js', (req, res, next) => {
-    console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ service-worker $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-    res.setHeader('Service-Worker-Allowed', '/');
-    res.setHeader('Cache-Control', 'no-store');
-    // res.setHeader('Cache-Control', 'no-cache');
-    // res.setHeader('Content-Type', 'application/javascript');
-    // res.setHeader('Content-Type', 'text/javascript');
-    return next();
-  });
+  // app.use('/dist/service-worker.js', (req, res, next) => {
+  //   console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ service-worker $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+  //   res.setHeader('Service-Worker-Allowed', '/');
+  //   res.setHeader('Cache-Control', 'no-store');
+  //   // res.setHeader('Cache-Control', 'no-cache');
+  //   // res.setHeader('Content-Type', 'application/javascript');
+  //   // res.setHeader('Content-Type', 'text/javascript');
+  //   return next();
+  // });
 
   // #########################################################################
 
-  app.use('/dlls/:dllName.js', express.static(path.join(__dirname, '../build/public/assets/dlls/:dllName.js')), (req, res, next) => {
+  app.use('../static/dist/dlls/:dllName.js', (req, res, next) => {
     console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DLLs $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     fs.access(
-      path.join(__dirname, '..', 'build', 'public', 'assests', 'dlls', `${req.params.dllName}.js`),
+      path.join(__dirname, '..', 'build', 'static', 'dist', 'dlls', `${req.params.dllName}.js`),
       fs.constants.R_OK,
       err => (err ? res.send(`console.log('No dll file found (${req.originalUrl})')`) : next())
     );
@@ -177,11 +175,11 @@ export default function (parameters) {
 
   // #########################################################################
 
-  // identify the originating IP address through an HTTP proxy or load balancer
-  app.use((req, res, next) => {
-    res.setHeader('X-Forwarded-For', req.ip);
-    return next();
-  });
+  // app.use(express.static(path.join(__dirname, '..', 'static')));
+
+  // #########################################################################
+
+  app.use(headers);
 
     // #########################################################################
 

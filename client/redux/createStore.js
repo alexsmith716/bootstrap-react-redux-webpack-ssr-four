@@ -97,11 +97,12 @@ export default function createStore({ history, data, helpers, persistConfig }) {
 
   // -----------------------------------------
 
-  // Redux DevTool
   // if (__CLIENT__ && __DEVTOOLS__) {
   //   console.log('>>>>>>>>>>>>>>>>>>> CreateStore > __CLIENT__ && __DEVTOOLS__ <<<<<<<<<<<<<<<<<<');
+
   //   const { persistState } = require('redux-devtools');
   //   const DevTools = require('../containers/DevTools/DevTools').default;
+  //   
   //   Array.prototype.push.apply(enhancers, [
   //     window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
   //     persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
