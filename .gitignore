@@ -2,6 +2,7 @@
 .yarnclean
 .yarncleanX
 
+ssl/
 node_modules/
 log/
 logs/
@@ -12,6 +13,8 @@ yarn-error.log
 dist/
 build/analyzers/
 build/public/assets/
+build/static/dist/
+build/static/assets/
 build/server/
 webpack/dlls/
 coverage/

@@ -146,7 +146,7 @@ export default function (parameters) {
   app.use(cookieParser()); // parse cookie header and populate req.cookies
   app.use(compression()); // compress request response bodies
 
-  app.use(express.static(path.join(__dirname, '..', 'static')));
+  // app.use(express.static(path.join(__dirname, '..', 'static')));
   app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')))
   app.use('/manifest.json', (req, res) => res.sendFile(path.join(__dirname, '..', 'static', 'manifest.json')));
 
@@ -164,18 +164,19 @@ export default function (parameters) {
 
   // #########################################################################
 
-  // app.use('../static/dist/dlls/:dllName.js', (req, res, next) => {
-  //   console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DLLs $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-  //   fs.access(
-  //     path.join(__dirname, '..', 'build', 'static', 'dist', 'dlls', `${req.params.dllName}.js`),
-  //     fs.constants.R_OK,
-  //     err => (err ? res.send(`console.log('No dll file found (${req.originalUrl})')`) : next())
-  //   );
-  // });
+  app.use('/dist/dlls/:dllName.js', (req, res, next) => {
+    const d = path.join(__dirname, '..', 'static', 'dist', 'dlls', `${req.params.dllName}.js`)
+    console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DLLs $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+    fs.access(
+      path.join(__dirname, '..', 'static', 'dist', 'dlls', `${req.params.dllName}.js`),
+      fs.constants.R_OK,
+      err => (err ? res.send(`console.log('No dll file found (${req.originalUrl})')`) : next())
+    );
+  });
 
   // #########################################################################
 
-  // app.use(express.static(path.join(__dirname, '..', 'static')));
+  app.use(express.static(path.join(__dirname, '..', 'static')));
 
   // #########################################################################
 

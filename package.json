@@ -21,7 +21,7 @@
     "prod:server:build": "NODE_ENV=production webpack --mode production --display-error-details --config ./webpack/webpack.config.server.production.babel.js",
     "prod:build": "NODE_ENV=production webpack --mode production --display-error-details --config ./webpack/webpack.config.client.production.babel.js",
     "prod:build:stats": "NODE_ENV=production webpack --profile --json > compilation-stats.json --mode production --config ./webpack/webpack.config.client.production.babel.js",
-    "dev:dlls": "webpack --display-error-details --config webpack/dllplugin.vendor.config.js",
+    "dlls": "webpack --display-error-details --config webpack/dllplugin.vendor.config.js",
     "prettier": "prettier-eslint --write --eslint-config-path .eslintrc './+(bin)/**/*.js'",
     "lint": "eslint -c .eslintrc bin && flow",
     "test": "NODE_PATH=client jest client"
@@ -192,7 +192,8 @@
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
-    "webpack-hot-middleware": "^2.24.2"
+    "webpack-hot-middleware": "^2.24.2",
+    "write-file-webpack-plugin": "^4.4.1"
   },
   "husky": {
     "hooks": {
