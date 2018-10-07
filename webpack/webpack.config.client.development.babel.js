@@ -8,7 +8,7 @@ const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugi
 const base_configuration = require('./webpack.config');
 const config = require('../config/config');
 
-// const webpackDllsPath = path.resolve(base_configuration.context, './dlls/');
+// const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const settings = require('./universal-webpack-settings');
 const { clientConfiguration } = require('universal-webpack');
@@ -27,12 +27,14 @@ let configuration = clientConfiguration(base_configuration, settings);
 
 // ==============================================================================================
 
-// var validDLLs = dllHelpers.isValidDLLs('vendor', configuration.output.path);
-// 
-// if (process.env.WEBPACK_DLLS === '1' && !validDLLs) {
-//   process.env.WEBPACK_DLLS = '0';
-//   console.warn('>>>>>> webpack.config.client.development.babel > WEBPACK_DLLS disabled !! <<<<<<<<<<');
-// };
+var validDLLs = dllHelpers.isValidDLLs('vendor', configuration.output.path);
+
+if (process.env.WEBPACK_DLLS === '1' && !validDLLs) {
+  process.env.WEBPACK_DLLS = '0';
+  console.warn('>>>>>> webpack.config.client.development.babel > WEBPACK_DLLS disabled !! <<<<<<<<<<');
+} else {
+  console.warn('>>>>>> webpack.config.client.development.babel > WEBPACK_DLLS ENABLED !! <<<<<<<<<<');
+};
 
 // ==============================================================================================
 
@@ -156,6 +158,8 @@ configuration = setDevFileServer(configuration)
 
 configuration.plugins.push(
 
+  // new WriteFilePlugin(),
+
   new webpack.HotModuleReplacementPlugin(),
 
   new webpack.DefinePlugin({
@@ -185,13 +189,12 @@ configuration.plugins.push(
 
 // ==============================================================================================
 
+// console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG >>>>>>>>>>>>>>>: ', configuration);
+// console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG MAIN!! >>>>>>>>>: ', configuration.entry.main);
+// console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG RULES >>>>>>>>>: ', configuration.module.rules);
+
+if (process.env.WEBPACK_DLLS === '1' && validDLLs) {
+  dllHelpers.installVendorDLL(configuration, 'vendor');
+};
+
 module.exports = configuration;
-
-console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG >>>>>>>>>>>>>>>: ', configuration);
-
-console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG MAIN!! >>>>>>>>>: ', configuration.entry.main);
-console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG RULES >>>>>>>>>: ', configuration.module.rules);
-
-// if (process.env.WEBPACK_DLLS === '1' && validDLLs) {
-//   dllHelpers.installVendorDLL(configuration, 'vendor');
-// };
