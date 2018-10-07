@@ -20,8 +20,6 @@ const bundleAnalyzerPath = path.resolve(configuration.context, './build/analyzer
 const assetsPath = path.resolve(configuration.context, './build/static/dist');
 const serverPath = path.resolve(configuration.context, './build/server');
 
-const foober = path.resolve(__dirname, '..', );
-
 // reuseExistingChunk: allows to reuse existing chunks instead of creating a new one when modules match exactly.
 // Chunks can be configured. There are 3 values possible "initial", "async" and "all". 
 // When configured the optimization only selects initial chunks, on-demand chunks or all chunks.
