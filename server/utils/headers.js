@@ -36,6 +36,3 @@ export default function headers(req, res, next) {
 // xssFilter:               adds some small XSS protections
 
 // https://helmetjs.github.io/docs/
-
-// res.header('X-Content-Type-Options', 'nosniff');
-// res.header('X-Frame-Options', 'deny');

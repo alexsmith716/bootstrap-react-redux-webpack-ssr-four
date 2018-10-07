@@ -164,14 +164,14 @@ export default function (parameters) {
 
   // #########################################################################
 
-  app.use('../static/dist/dlls/:dllName.js', (req, res, next) => {
-    console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DLLs $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-    fs.access(
-      path.join(__dirname, '..', 'build', 'static', 'dist', 'dlls', `${req.params.dllName}.js`),
-      fs.constants.R_OK,
-      err => (err ? res.send(`console.log('No dll file found (${req.originalUrl})')`) : next())
-    );
-  });
+  // app.use('../static/dist/dlls/:dllName.js', (req, res, next) => {
+  //   console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DLLs $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+  //   fs.access(
+  //     path.join(__dirname, '..', 'build', 'static', 'dist', 'dlls', `${req.params.dllName}.js`),
+  //     fs.constants.R_OK,
+  //     err => (err ? res.send(`console.log('No dll file found (${req.originalUrl})')`) : next())
+  //   );
+  // });
 
   // #########################################################################
 
