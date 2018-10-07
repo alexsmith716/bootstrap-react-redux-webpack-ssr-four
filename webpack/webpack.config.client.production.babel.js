@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { clientConfiguration } = require('universal-webpack');
@@ -17,9 +17,10 @@ const configuration = require('./webpack.config');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 
 const bundleAnalyzerPath = path.resolve(configuration.context, './build/analyzers/bundleAnalyzer');
-const visualizerPath = path.resolve(configuration.context, './build/analyzers/visualizer');
-const assetsPath = path.resolve(configuration.context, './build/public/assets');
+const assetsPath = path.resolve(configuration.context, './build/static/dist');
 const serverPath = path.resolve(configuration.context, './build/server');
+
+const foober = path.resolve(__dirname, '..', );
 
 // reuseExistingChunk: allows to reuse existing chunks instead of creating a new one when modules match exactly.
 // Chunks can be configured. There are 3 values possible "initial", "async" and "all". 
@@ -102,7 +103,7 @@ configuration.output.chunkFilename = '[name].[chunkhash].chunk.js';
 
 // output.publicPath: specifies the public URL of the output directory
 // output.publicPath: value is prefixed to every URL created by the runtime or loaders
-configuration.output.publicPath = config.publicPath;
+configuration.output.publicPath = '/dist/';
 
 configuration.module.rules.push(
   {
@@ -202,22 +203,31 @@ configuration.optimization = {
       //   name: 'vendor',
       //   chunks: 'async',
       // }
+      // vendors: {
+      //   name: 'vendors',
+      //   reuseExistingChunk: true,
+      //   chunks: chunk => ['main',].includes(chunk.name),
+      //   test: module => /[\\/]node_modules[\\/]/.test(module.context),
+      //   chunks: 'async',
+      //   // chunks: 'initial',
+      //   // chunks: 'all',
+      //   // minSize: 0,
+      //   minSize: 30000,
+      //   maxSize: 0,
+      //   minChunks: 1,
+      //   maxAsyncRequests: 5,
+      //   maxInitialRequests: 3,
+      //   // priority: -10
+      //   // priority: 10,
+      // }
       vendors: {
-        name: 'vendors',
-        reuseExistingChunk: true,
-        chunks: chunk => ['main',].includes(chunk.name),
-        test: module => /[\\/]node_modules[\\/]/.test(module.context),
-        chunks: 'async',
-        // chunks: 'initial',
-        // chunks: 'all',
-        // minSize: 0,
-        minSize: 30000,
-        maxSize: 0,
-        minChunks: 1,
-        maxAsyncRequests: 5,
-        maxInitialRequests: 3,
-        // priority: -10
-        // priority: 10,
+        test: /[\\/]node_modules[\\/]/,
+        priority: -10
+      },
+      default: {
+        minChunks: 2,
+        priority: -20,
+        reuseExistingChunk: true
       }
     }
   },
@@ -233,12 +243,13 @@ configuration.optimization = {
 
 configuration.plugins.push(
 
-  new CleanWebpackPlugin([bundleAnalyzerPath,visualizerPath,assetsPath,serverPath], { root: configuration.context }),
+  new CleanWebpackPlugin([bundleAnalyzerPath,assetsPath,serverPath], { root: configuration.context }),
 
   new MiniCssExtractPlugin({
     // For long term caching (according to 'mini-css-extract-plugin' docs)
-    filename: '[name].[contenthash].css'
-    // chunkFilename: '[name].[contenthash].chunk.css.css',
+    filename: '[name].[contenthash].css',
+    // filename: '[name].[contenthash].css.css',
+    // chunkFilename: '[name].[contenthash].chunk.css',
   }),
 
   new webpack.DefinePlugin({
@@ -251,7 +262,7 @@ configuration.plugins.push(
   }),
 
   new ReactLoadablePlugin({
-    filename: path.join(configuration.output.path, 'loadable-chunks.json')
+    filename: path.join(assetsPath, 'loadable-chunks.json')
   }),
 
   new HtmlWebpackPlugin({
@@ -259,25 +270,22 @@ configuration.plugins.push(
     template: path.join(configuration.context, './server/pwa.js')
   }),
 
-  // use service workers to cache external dependencies
-  // generate 'service-worker.js' and add it to build directory
+  // https://github.com/goldhand/sw-precache-webpack-plugin
+  // https://github.com/GoogleChromeLabs/sw-precache
+  // new SWPrecacheWebpackPlugin({
+  //   cacheId: 'bootstrap-react-redux-webpack-ssr-four',
+  //   filename: 'service-worker.js',
+  //   maximumFileSizeToCacheInBytes: 8388608,
 
-  // SWPrecacheWebpackPlugin is a webpack plugin for using service workers to cache your external project dependencies. 
-  // It will generate a service worker file using sw-precache and add it to your build directory.
+  //   staticFileGlobs: [`${path.dirname(assetsPath)}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
+  //   stripPrefix: path.dirname(assetsPath),
 
-  new SWPrecacheWebpackPlugin({
-    cacheId: 'bootstrap-react-redux-webpack-ssr-four',
-    filename: 'service-worker.js',
-    // maximumFileSizeToCacheInBytes: 8388608,
-
-    staticFileGlobs: [`${path.dirname(configuration.output.path)}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
-    stripPrefix: path.dirname(configuration.output.path),
-
-    directoryIndex: '/',
-    verbose: true,
-    // skipWaiting: true,
-    navigateFallback: '/assets/index.html'
-  }),
+  //   directoryIndex: '/',
+  //   verbose: true,
+  //   // clientsClaim: true,
+  //   skipWaiting: false,
+  //   navigateFallback: '/dist/index.html'
+  // }),
 
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',

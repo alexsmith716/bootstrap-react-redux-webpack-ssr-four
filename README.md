@@ -1,8 +1,5 @@
 # bootstrap-react-redux-webpack-ssr-four
 
-about.49a9bf77b5e592f27bf6.css
-main.ff95726a199ce54a2b7d.css
-
 ## Overview:
 
 App is a continuation of repo 'bootstrap-react-redux-webpack-ssr-two'. Babel 7.x has been re-worked for app.
@@ -20,13 +17,12 @@ about:1 Refused to execute script from 'http://localhost:3000/undefinedabout.619
 
 about:1 Refused to execute script from 'http://localhost:3000/undefinedabout.619f63ed2c3ab0f63343.chunk.js.map' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.
 
+  "private": true,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // finish 'key-points' 'Code Splitting' on webpack prod && quickly do a 'key-points' for dev config
 // explain usage of 'optimization.splitChunks.cacheGroups.vendors' in webpack prod
-//
-// need to resolve the '.css.css' test in 'Html.js' for returned RL bundles
 //
 // move on to 'bigger picture' usage of assets in SSR && the SSR process itself
 // ---------------------------------------------------------------------------

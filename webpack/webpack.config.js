@@ -4,10 +4,11 @@ const webpack = require('webpack');
 const path = require('path');
 
 const rootPath = path.resolve(__dirname, '..');
+const assetsPath = path.resolve(rootPath, './build/static/dist');
 
 module.exports = {
 
-  context: rootPath,
+  context: path.resolve(__dirname, '..'),
 
   entry: {
     main: [],
@@ -15,7 +16,7 @@ module.exports = {
 
   output: {
     // filesystem path for static files
-    path: path.resolve(rootPath, 'build/public/assets'),
+    path: assetsPath,
   },
 
   module: {

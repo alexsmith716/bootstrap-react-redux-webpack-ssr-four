@@ -49,7 +49,7 @@ module.exports = {
 
   output: {
     // dll bundle build
-    path: path.join(projectRootPath, 'build/public/assets/dlls'),
+    path: path.join(projectRootPath, 'build/static/dist/dlls'),
     filename: 'dll__[name].js',
     library: 'DLL_[name]_[hash]'
   },
