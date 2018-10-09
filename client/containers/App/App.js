@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from '../../redux/modules/auth';
 import { isLoaded as isInfoLoaded, load as loadInfo } from '../../redux/modules/info';
 
-// import { Notifs, InfoBar } from '../../components';
 import { Notifs, InfoBar } from '../../components';
 import config from '../../../config/config';
 

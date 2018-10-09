@@ -196,11 +196,10 @@ configuration.optimization = {
     // 'splitChunks.cacheGroups' inherits and/or overrides any options from splitChunks
     // 'test', 'priority' and 'reuseExistingChunk' can only be configured on 'splitChunks.cacheGroups'
     cacheGroups: {
-      // vendor: {
-      //   test: /[\\/]node_modules[\\/]/,
-      //   name: 'vendor',
-      //   chunks: 'async',
-      // }
+      // no difference between the builds of below 'optimization.splitChunks.cacheGroups' objects
+      // going with the default for now and moving on
+      // ------------------------------------
+      // "modified config":
       // vendors: {
       //   name: 'vendors',
       //   reuseExistingChunk: true,
@@ -218,6 +217,8 @@ configuration.optimization = {
       //   // priority: -10
       //   // priority: 10,
       // }
+      // ------------------------------------
+      // "webpack's default config":
       vendors: {
         test: /[\\/]node_modules[\\/]/,
         priority: -10
@@ -227,6 +228,7 @@ configuration.optimization = {
         priority: -20,
         reuseExistingChunk: true
       }
+      // ------------------------------------
     }
   },
   // adds an additional chunk to each entrypoint containing only the runtime

@@ -2,7 +2,7 @@
 export default function headers(req, res, next) {
   // Request headers +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // identify the originating IP address through an HTTP proxy or load balancer
-  // res.header('X-Forwarded-For', req.ip);
+  res.header('X-Forwarded-For', req.ip);
 
   // Response headers ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // Specifying which web sites can participate in CORS

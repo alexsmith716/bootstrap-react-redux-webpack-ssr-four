@@ -60,14 +60,14 @@ const Html = ({ assets, store, content, bundles }) => {
       <body>
 
         {/* (>>>>>>> CONTENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<) */}
-        <div id="content" dangerouslySetInnerHTML={{ __html: content }} ></div>
+        <div id="content" dangerouslySetInnerHTML={{ __html: content }} />
 
         {/* (>>>>>>> STORE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<) */}
         {store && (
           <script
             dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(store.getState())};` }}
             charSet="UTF-8"
-          ></script>
+          />
         )}
 
         {/* {assets.javascript && <script src={assets.javascript.runtime} charSet="UTF-8" />} */}
