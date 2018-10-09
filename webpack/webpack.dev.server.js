@@ -8,11 +8,11 @@ webpackConfig.mode = 'development';
 
 var compiler = webpack(webpackConfig);
 
-var host = 'localhost';
-var port = 3001;
+const host = config.devServerHost || 'localhost';
+const port = Number(config.devServerPort) || 3001;
 
 var serverOptions = {
-  contentBase: 'http://' + 'localhost' + ':' + 3001,
+  contentBase: `http://${host}:${port}`,
   quiet: true,
   noInfo: true,
   hot: true,

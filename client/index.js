@@ -205,7 +205,7 @@ initSocket();
     const DevTools = require('./containers/DevTools/DevTools').default;
 
     ReactDOM.hydrate(
-      <Provider store={store}>
+      <Provider store={store} {...providers}>
         <DevTools />
       </Provider>,
       devToolsDest
@@ -224,10 +224,9 @@ initSocket();
   }
 
   if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<');
     try {
       const registration = await navigator.serviceWorker.register('/dist/service-worker.js', { scope: '/' });
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<: ', registration);
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator YES!! <<<<<<<<<<<<<');
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
@@ -252,7 +251,7 @@ initSocket();
     await navigator.serviceWorker.ready;
     console.log('Service Worker Ready');
   } else {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator NOOOO!!! <<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator NO!! <<<<<<<<<<<<<');
   }
 
 })();

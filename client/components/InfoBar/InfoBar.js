@@ -42,9 +42,7 @@ class InfoBar extends Component {
 
             <h5 className="card-title">InfoBar message: '<span className={styles.message}>{info ? info.message : 'no info!'}</span>'</h5>
 
-            <p className="card-text">
-              {info && new Date(info.time).toString()}
-            </p>
+            <p className="card-text">{info && new Date(info.time).toString()}</p>
             <p>{info && info.time}</p>
 
             <button type="button" className="btn btn-primary" onClick={load}>

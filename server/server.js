@@ -146,7 +146,6 @@ export default function (parameters) {
   app.use(cookieParser()); // parse cookie header and populate req.cookies
   app.use(compression()); // compress request response bodies
 
-  // app.use(express.static(path.join(__dirname, '..', 'static')));
   app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')))
   app.use('/manifest.json', (req, res) => res.sendFile(path.join(__dirname, '..', 'static', 'manifest.json')));
 
@@ -176,7 +175,11 @@ export default function (parameters) {
 
   // #########################################################################
 
-  app.use(headers);
+  // app.use(headers);
+  app.use((req, res, next) => {
+    res.setHeader('X-Forwarded-For', req.ip);
+    return next();
+  });
 
     // #########################################################################
 
