@@ -8,8 +8,6 @@ const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugi
 const base_configuration = require('./webpack.config');
 const config = require('../config/config');
 
-// const WriteFilePlugin = require('write-file-webpack-plugin');
-
 const settings = require('./universal-webpack-settings');
 const { clientConfiguration } = require('universal-webpack');
 
@@ -157,8 +155,6 @@ configuration = setDevFileServer(configuration)
 // ==============================================================================================
 
 configuration.plugins.push(
-
-  // new WriteFilePlugin(),
 
   new webpack.HotModuleReplacementPlugin(),
 
