@@ -198,28 +198,29 @@ initSocket();
 
   // ==============================================================================================
 
-  // if (__DEVTOOLS__ && !window.devToolsExtension) {
-  //   const devToolsDest = document.createElement('div');
-  //   window.document.body.insertBefore(devToolsDest, null);
-  //   const DevTools = require('./containers/DevTools/DevTools').default;
+  if (__DEVTOOLS__ && !window.devToolsExtension) {
+    console.log('>>>>>>>>>>>>>>>>>>> CLIENT.JS > __DEVTOOLS__ <<<<<<<<<<<<<<<<<<<<<<');
+    const devToolsDest = document.createElement('div');
+    window.document.body.insertBefore(devToolsDest, null);
+    const DevTools = require('./containers/DevTools/DevTools').default;
 
-  //   ReactDOM.hydrate(
-  //     <Provider store={store}>
-  //       <DevTools />
-  //     </Provider>,
-  //     devToolsDest
-  //   );
-  // }
+    ReactDOM.hydrate(
+      <Provider store={store} {...providers}>
+        <DevTools />
+      </Provider>,
+      devToolsDest
+    );
+  }
 
   if (!__DEVELOPMENT__) {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ 1111111 <<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ NO <<<<<<<<<<<<<');
   } else {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ 222222 <<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ YES <<<<<<<<<<<<<');
   }
   if ('serviceWorker' in navigator) {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator 111111 <<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator YES <<<<<<<<<<<<<');
   } else {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator 222222 <<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator NO <<<<<<<<<<<<<');
   }
 
   // if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {

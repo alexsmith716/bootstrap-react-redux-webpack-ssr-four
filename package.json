@@ -192,8 +192,7 @@
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
-    "webpack-hot-middleware": "^2.24.2",
-    "write-file-webpack-plugin": "^4.4.1"
+    "webpack-hot-middleware": "^2.24.2"
   },
   "husky": {
     "hooks": {

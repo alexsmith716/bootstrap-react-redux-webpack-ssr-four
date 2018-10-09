@@ -7,6 +7,8 @@
 // const Provider = withContext(ReduxProvider);
 
 // ----------------------------
+// https://github.com/tayiorbeii/egghead.io_redux_course_notes
+// https://github.com/tayiorbeii/egghead.io_redux_course_notes/blob/master/20-Passing_the_Store_Down_Implicitly_via_Context.md
 // https://github.com/acdlite/recompose/blob/master/docs/API.md#withcontext
 
 // withContext(
@@ -56,7 +58,3 @@ export default Provider;
 // Context enables passing a value into the component tree without explicitly threading it through every component
 
 // Context is primarily used when some data needs to be accessible by many components at different nesting levels
-
-
-
-
