@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { clientConfiguration } = require('universal-webpack');
@@ -270,20 +270,20 @@ configuration.plugins.push(
 
   // https://github.com/goldhand/sw-precache-webpack-plugin
   // https://github.com/GoogleChromeLabs/sw-precache
-  // new SWPrecacheWebpackPlugin({
-  //   cacheId: 'bootstrap-react-redux-webpack-ssr-four',
-  //   filename: 'service-worker.js',
-  //   maximumFileSizeToCacheInBytes: 8388608,
+  new SWPrecacheWebpackPlugin({
+    cacheId: 'bootstrap-react-redux-webpack-ssr-four',
+    filename: 'service-worker.js',
+    maximumFileSizeToCacheInBytes: 8388608,
 
-  //   staticFileGlobs: [`${path.dirname(assetsPath)}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
-  //   stripPrefix: path.dirname(assetsPath),
+    staticFileGlobs: [`${path.dirname(assetsPath)}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
+    stripPrefix: path.dirname(assetsPath),
 
-  //   directoryIndex: '/',
-  //   verbose: true,
-  //   // clientsClaim: true,
-  //   skipWaiting: false,
-  //   navigateFallback: '/dist/index.html'
-  // }),
+    directoryIndex: '/',
+    verbose: true,
+    // clientsClaim: true,
+    // skipWaiting: false,
+    navigateFallback: '/dist/index.html'
+  }),
 
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',
