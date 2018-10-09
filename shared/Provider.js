@@ -31,7 +31,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import { withContext } from 'recompose';
 
-const Provider = withContext( 
+const Provider = withContext(
   {
     app: PropTypes.objectOf(PropTypes.any).isRequired   // an object of React prop types
   },

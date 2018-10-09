@@ -205,7 +205,7 @@ initSocket();
     const DevTools = require('./containers/DevTools/DevTools').default;
 
     ReactDOM.hydrate(
-      <Provider store={store} {...providers}>
+      <Provider store={store}>
         <DevTools />
       </Provider>,
       devToolsDest
@@ -223,36 +223,36 @@ initSocket();
     console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator NO <<<<<<<<<<<<<');
   }
 
-  // if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
-  //   console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<');
-  //   try {
-  //     const registration = await navigator.serviceWorker.register('/dist/service-worker.js', { scope: '/' });
-  //     console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<XX: ', registration);
-  //     registration.onupdatefound = () => {
-  //       const installingWorker = registration.installing;
-  //       installingWorker.onstatechange = () => {
-  //         switch (installingWorker.state) {
-  //           case 'installed':
-  //             if (navigator.serviceWorker.controller) {
-  //               console.log('New or updated content is available.');
-  //             } else {
-  //               console.log('Content is now available offline!');
-  //             }
-  //             break;
-  //           case 'redundant':
-  //             console.error('The installing service worker became redundant.');
-  //             break;
-  //           default:
-  //         }
-  //       };
-  //     };
-  //   } catch (error) {
-  //     console.log('Error registering service worker: ', error);
-  //   }
-  //   await navigator.serviceWorker.ready;
-  //   console.log('Service Worker Ready');
-  // } else {
-  //   console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator NOOOO!!! <<<<<<<<<<<<<');
-  // }
+  if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<');
+    try {
+      const registration = await navigator.serviceWorker.register('/dist/service-worker.js', { scope: '/' });
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator <<<<<<<<<<<<<: ', registration);
+      registration.onupdatefound = () => {
+        const installingWorker = registration.installing;
+        installingWorker.onstatechange = () => {
+          switch (installingWorker.state) {
+            case 'installed':
+              if (navigator.serviceWorker.controller) {
+                console.log('New or updated content is available.');
+              } else {
+                console.log('Content is now available offline!');
+              }
+              break;
+            case 'redundant':
+              console.error('The installing service worker became redundant.');
+              break;
+            default:
+          }
+        };
+      };
+    } catch (error) {
+      console.log('Error registering service worker: ', error);
+    }
+    await navigator.serviceWorker.ready;
+    console.log('Service Worker Ready');
+  } else {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator NOOOO!!! <<<<<<<<<<<<<');
+  }
 
 })();

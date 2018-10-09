@@ -17,7 +17,6 @@ about:1 Refused to execute script from 'http://localhost:3000/undefinedabout.619
 
 about:1 Refused to execute script from 'http://localhost:3000/undefinedabout.619f63ed2c3ab0f63343.chunk.js.map' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.
 
-  "private": true,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------

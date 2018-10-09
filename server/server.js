@@ -152,20 +152,16 @@ export default function (parameters) {
 
   // #########################################################################
 
-  // app.use('/dist/service-worker.js', (req, res, next) => {
-  //   console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ service-worker $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-  //   res.setHeader('Service-Worker-Allowed', '/');
-  //   res.setHeader('Cache-Control', 'no-store');
-  //   // res.setHeader('Cache-Control', 'no-cache');
-  //   // res.setHeader('Content-Type', 'application/javascript');
-  //   // res.setHeader('Content-Type', 'text/javascript');
-  //   return next();
-  // });
+  app.use('/dist/service-worker.js', (req, res, next) => {
+    console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ service-worker $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+    res.setHeader('Service-Worker-Allowed', '/');
+    res.setHeader('Cache-Control', 'no-store');
+    return next();
+  });
 
   // #########################################################################
 
   app.use('/dist/dlls/:dllName.js', (req, res, next) => {
-    const d = path.join(__dirname, '..', 'static', 'dist', 'dlls', `${req.params.dllName}.js`)
     console.log('>>>>>>>>>>>>>>>>> SERVER > $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DLLs $$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     fs.access(
       path.join(__dirname, '..', 'static', 'dist', 'dlls', `${req.params.dllName}.js`),
