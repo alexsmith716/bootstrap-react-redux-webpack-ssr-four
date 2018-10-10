@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import services from './services';
 import channels from './channels';  // Decide what events to send to connected real-time clients
-import serverConfig from '../config/config';
+import apiConfig from '../config/config';
 import config from './config';
 
 process.on('unhandledRejection', (error, promise) => {
@@ -80,19 +80,19 @@ const sessionExpireDate = 6 * 60 * 60 * 1000; // 6 hours
 
 app.use(
   session({
-    secret: serverConfig.sessionSecret,
+    secret: apiConfig.sessionSecret,
     resave: false,
     // rolling: true,
     saveUninitialized: false,
     cookie: {
       secure: false,
       // httpOnly: true,
-      // maxAge: serverConfig.sessionExpiration,
+      // maxAge: apiConfig.sessionExpiration,
       maxAge: sessionExpireDate,
     },
     name: 'id',
     store: new MongoStore({
-      url: serverConfig.mongoDBsessionURL,
+      url: apiConfig.mongoDBsessionURL,
       // ttl: 14 * 24 * 60 * 60 // = 14 days. Default
       autoRemove: 'native',
     })
@@ -145,12 +145,12 @@ app.use(express.errorHandler({
   }
 }));
 
-if (serverConfig.apiPort) {
-  app.listen(serverConfig.apiPort, (err) => {
+if (process.env.APIPORT) {
+  app.listen(process.env.APIPORT, (err) => {
     if (err) {
       console.error('>>>>>> api > api > Express API server connection Error', err);
     }
-    console.error('>>>>>> api > api > Express API server running on PORT: ', serverConfig.apiPort);
+    console.error('>>>>>> api > api > Express API server running on PORT: ', process.env.APIPORT);
   });
 } else {
   console.error('==>     ERROR: No APIPORT environment variable has been specified');

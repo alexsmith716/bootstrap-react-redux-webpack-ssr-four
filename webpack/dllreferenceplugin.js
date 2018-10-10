@@ -24,7 +24,7 @@ function installVendorDLL(config, dllName) {
     }));
 
   } else {
-    console.log('>>>>>>>>>>>> dllreferenceplugin > installVendorDLL > No Manifest <<<<<<<');
+    console.log('>>>>>>>>>>>> dllreferenceplugin > installVendorDLL > No Manifest <<<<<<<<<<<<<<<');
   }
 };
 
@@ -38,7 +38,7 @@ function loadDLLManifest(filePath) {
     process.env.WEBPACK_DLLS = '0';
     console.log('>>>>>>>>>>>> dllreferenceplugin > loadDLLManifest > Error: ', e);
   }
-  console.log('>>>>>>>>>>>> dllreferenceplugin > loadDLLManifest > Undefined <<<<<<<');
+  console.log('>>>>>>>>>>>> dllreferenceplugin > loadDLLManifest > Undefined <<<<<<<<<<<<<<<');
   return undefined;
 }
 
@@ -62,7 +62,7 @@ function isValidDLLs(dllNames, assetsPath) {
       console.warn('>>>>>>>>>>>> dllreferenceplugin > isValidDLLs > Error: ', e);
       return false;
     }
-    console.log('>>>>>>>>>>>> dllreferenceplugin > isValidDLLs > Valid <<<<<<<');
+    console.log('>>>>>>>>>>>> dllreferenceplugin > isValidDLLs > Valid <<<<<<<<<<<<<<<');
     return true;
   });
 }
