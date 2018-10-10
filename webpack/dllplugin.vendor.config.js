@@ -2,47 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var projectRootPath = path.resolve(__dirname, '../');
 
-// TO REVIEW ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// https://webpack.js.org/guides/build-performance/
-// https://webpack.js.org/plugins/dll-plugin/
-
-// Examples:
-// https://github.com/webpack/webpack/tree/master/examples/dll
-// https://github.com/webpack/webpack/tree/master/examples/dll-user
-
-// Optimize the compilation to increase build performance
-
-// Use the DllPlugin to move code that is changed less often into a separate compilation. 
-// This will improve the application's compilation speed
-
-// DllPlugin and DllReferencePlugin provide means to split bundles in a way that improves build time performance
-
-// DllPlugin:
-//  * Creates a dll-only-bundle (./build/public/assests/dlls/dll_vendor.js)
-//  * Creates a manifest.json file, which is used by the DllReferencePlugin to map dependencies
-//  * It contains mappings from require and import requests, to module ids. 
-//  * It is used by the DllReferencePlugin.
-
-// DllReferencePlugin:
-//  * used in the primary webpack config
-//  * it references the dll-only-bundle(s) to require pre-built dependencies (./webpack/dlls/vendor.json)
-
-// What I am currently most interested in are the '@babel' vendor dependencies
-// What is the purpose that they specifically referenced
-
-// 'runtime': the process by which a virtual machine (Node) executes the instructions of a program (all the app code)
-// 'runtime': https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase)
-// 'regenerator-runtime': Source transformer enabling ECMAScript 6 generator functions in JavaScript-of-today
-// 'regenerator-runtime': https://github.com/facebook/regenerator
-// 'core-js': the standard's library for JavaScript polyfills for ECMAScript 5, ECMAScript 6, ECMAScript 7+ proposals
-// 'core-js': what babel-polyfill uses to, well, polyfill
-
-// @babel/runtime-corejs2: library that contain's Babel 'modular runtime helpers' and a version of 'regenerator-runtime' as well as 'core-js'.
-
-// So, since 'transpiling' && 'polyfilling' is central, essential, almost always used in modern app development,
-// the below '@babel' 'libraries/packages' would well qualify as 'code that is changed less often' (and always going to be used in the app)
-// the below '@babel' 'libraries/packages' are selected specifically which helps in optimizing build performance
-
 module.exports = {
   mode: 'development',
   // devtool: 'inline-source-map',
@@ -66,37 +25,49 @@ module.exports = {
       //
       // webpack --config webpack/dev.config.js --display-modules | egrep -o '@babel/runtime-corejs2/\S+' | sed 's/\.js$//' | sort | uniq
 
-      '@babel/runtime-corejs2/core-js/array/from',
-      '@babel/runtime-corejs2/core-js/get-iterator',
-      '@babel/runtime-corejs2/core-js/is-iterable',
-      '@babel/runtime-corejs2/core-js/json/stringify',
-      '@babel/runtime-corejs2/core-js/number/is-integer',
-      '@babel/runtime-corejs2/core-js/number/is-safe-integer',
-      '@babel/runtime-corejs2/core-js/object/assign',
-      '@babel/runtime-corejs2/core-js/object/create',
-      '@babel/runtime-corejs2/core-js/object/define-property',
-      '@babel/runtime-corejs2/core-js/object/entries',
-      '@babel/runtime-corejs2/core-js/object/get-own-property-names',
-      '@babel/runtime-corejs2/core-js/object/get-prototype-of',
-      '@babel/runtime-corejs2/core-js/object/keys',
-      '@babel/runtime-corejs2/core-js/object/set-prototype-of',
-      '@babel/runtime-corejs2/core-js/object/values',
-      '@babel/runtime-corejs2/core-js/promise',
-      '@babel/runtime-corejs2/core-js/symbol',
-      '@babel/runtime-corejs2/core-js/symbol/iterator',
-      '@babel/runtime-corejs2/helpers/asyncToGenerator',
-      '@babel/runtime-corejs2/helpers/classCallCheck',
-      '@babel/runtime-corejs2/helpers/createClass',
-      '@babel/runtime-corejs2/helpers/defineProperty',
-      '@babel/runtime-corejs2/helpers/extends',
-      '@babel/runtime-corejs2/helpers/inherits',
-      '@babel/runtime-corejs2/helpers/objectWithoutProperties',
-      '@babel/runtime-corejs2/helpers/possibleConstructorReturn',
-      '@babel/runtime-corejs2/helpers/slicedToArray',
-      '@babel/runtime-corejs2/helpers/toConsumableArray',
-      '@babel/runtime-corejs2/helpers/typeof',
-      '@babel/runtime-corejs2/regenerator/index',
-      // </@babel/runtime-corejs2>
+      '@babel/runtime-corejs2/core-js/array/from.js',
+      '@babel/runtime-corejs2/core-js/array/is-array.js',
+      '@babel/runtime-corejs2/core-js/get-iterator.js',
+      '@babel/runtime-corejs2/core-js/is-iterable.js',
+      '@babel/runtime-corejs2/core-js/number/is-integer.js',
+      '@babel/runtime-corejs2/core-js/object/assign.js',
+      '@babel/runtime-corejs2/core-js/object/create.js',
+      '@babel/runtime-corejs2/core-js/object/define-property.js',
+      '@babel/runtime-corejs2/core-js/object/entries.js',
+      '@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js',
+      '@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js',
+      '@babel/runtime-corejs2/core-js/object/get-prototype-of.js',
+      '@babel/runtime-corejs2/core-js/object/keys.js',
+      '@babel/runtime-corejs2/core-js/object/set-prototype-of.js',
+      '@babel/runtime-corejs2/core-js/promise.js',
+      '@babel/runtime-corejs2/core-js/set-immediate.js',
+      '@babel/runtime-corejs2/core-js/symbol/iterator.js',
+      '@babel/runtime-corejs2/core-js/symbol.js',
+      '@babel/runtime-corejs2/helpers/arrayWithHoles.js',
+      '@babel/runtime-corejs2/helpers/arrayWithoutHoles.js',
+      '@babel/runtime-corejs2/helpers/assertThisInitialized.js',
+      '@babel/runtime-corejs2/helpers/asyncToGenerator.js',
+      '@babel/runtime-corejs2/helpers/classCallCheck.js',
+      '@babel/runtime-corejs2/helpers/createClass.js',
+      '@babel/runtime-corejs2/helpers/defineProperty.js',
+      '@babel/runtime-corejs2/helpers/extends.js',
+      '@babel/runtime-corejs2/helpers/getPrototypeOf.js',
+      '@babel/runtime-corejs2/helpers/inherits.js',
+      '@babel/runtime-corejs2/helpers/iterableToArray.js',
+      '@babel/runtime-corejs2/helpers/iterableToArrayLimit.js',
+      '@babel/runtime-corejs2/helpers/nonIterableRest.js',
+      '@babel/runtime-corejs2/helpers/nonIterableSpread.js',
+      '@babel/runtime-corejs2/helpers/objectSpread.js',
+      '@babel/runtime-corejs2/helpers/objectWithoutProperties.js',
+      '@babel/runtime-corejs2/helpers/objectWithoutPropertiesLoose.js',
+      '@babel/runtime-corejs2/helpers/possibleConstructorReturn.js',
+      '@babel/runtime-corejs2/helpers/setPrototypeOf.js',
+      '@babel/runtime-corejs2/helpers/slicedToArray.js',
+      '@babel/runtime-corejs2/helpers/toConsumableArray.js',
+      '@babel/runtime-corejs2/helpers/typeof.js',
+      '@babel/runtime-corejs2/node_modules/regenerator-runtime/runtime.js',
+      '@babel/runtime-corejs2/node_modules/regenerator-runtime/runtime-module.js',
+      '@babel/runtime-corejs2/regenerator/index.js',
 
       'axios',
       'bootstrap',

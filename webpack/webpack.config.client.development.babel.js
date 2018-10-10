@@ -15,8 +15,10 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 // ==============================================================================================
 
-const { setDevFileServer } = require('./devserver');
+const host = process.env.HOST || 'localhost';
+const port = +process.env.PORT + 1 || 3001;
 
+const { setDevFileServer } = require('./devserver');
 // console.warn('>>>>>> webpack.config.client.development.babel > setDevFileServer: ', setDevFileServer);
 
 // ==============================================================================================
@@ -49,7 +51,7 @@ configuration.output.filename = '[name].[hash].js';
 // specifies the name of each (non-entry) chunk files
 configuration.output.chunkFilename = '[name].[chunkhash].chunk.js';
 // network path for static files
-configuration.output.publicPath = config.publicPath;
+configuration.output.publicPath = `http://${host}:${port}/dist/`;
 
 // https://babeljs.io/docs/en/next/babel-polyfill.html
 // If you are using ES6's import syntax in your application's entry point, 
@@ -150,6 +152,7 @@ configuration.module.rules.push(
 
 // ==============================================================================================
 
+// Fetch all files from webpack development server
 configuration = setDevFileServer(configuration)
 
 // ==============================================================================================

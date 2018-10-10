@@ -8,8 +8,8 @@ webpackConfig.mode = 'development';
 
 var compiler = webpack(webpackConfig);
 
-const host = config.devServerHost || 'localhost';
-const port = Number(config.devServerPort) || 3001;
+const host = config.host || 'localhost';
+const port = Number(config.port) + 1 || 3001;
 
 var serverOptions = {
   contentBase: `http://${host}:${port}`,
@@ -18,7 +18,7 @@ var serverOptions = {
   hot: true,
   inline: true,
   lazy: false,
-  publicPath: config.publicPath,
+  publicPath: webpackConfig.output.publicPath,
   headers: { 'Access-Control-Allow-Origin': '*' }
 };
 
