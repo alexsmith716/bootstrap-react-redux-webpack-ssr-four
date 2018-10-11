@@ -219,6 +219,11 @@ configuration.optimization = {
       // }
       // ------------------------------------
       // "webpack's default config":
+      // default config loads all css on SSR
+      // that's a main difference compared to 'faceyspacey/universal-demo'
+      // 'faceyspacey/universal-demo' loads css on-demand
+      // tried many configs but so far default config works
+      // unbelievable i still have not completely nailed down the workings between webpack && mini-css-extract-plugin
       vendors: {
         test: /[\\/]node_modules[\\/]/,
         priority: -10
@@ -227,7 +232,40 @@ configuration.optimization = {
         minChunks: 2,
         priority: -20,
         reuseExistingChunk: true
-      }
+      },
+      // vendor: {
+      //   test: /(node_modules|vendors).+(?<!css)$/,
+      //   name: 'vendor',
+      //   chunks: 'all',
+      // },
+      // Extracting CSS based on entry (builds a global && local css file)
+      // >>>>>>>> GOOD TO KNOW NOT TO NAME A 'cacheGroups' AFTER A ENTRY POINT <<<<<<<<
+      // builds a 'main.css' for all the globals and a 'mainStyles.css' for all locals
+      // https://github.com/webpack-contrib/mini-css-extract-plugin#extracting-css-based-on-entry
+      // mainStyles: {
+      //   name: 'mainStyles',
+      //   test: (m,c,entry = 'main') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
+      //   chunks: 'async',
+      //   // chunks: 'all',
+      //   // chunks: 'initial',
+      //   enforce: true
+      // },
+      // Extracting all CSS in a single file
+      // https://github.com/webpack-contrib/mini-css-extract-plugin#extracting-all-css-in-a-single-file
+      // 'cacheGroups' could be named:
+      //    * following 'routes.js' component names 
+      //       * ("/" route exact >>>>>>> container/component 'Home.js')
+      //    * following the container/component where they are referenced
+      //       * ('App.js')
+      //    * following CSS Modules global/local scoping 
+      // scopedLocal: {
+      //   name: 'scopedLocal',
+      //   test: /\.(css|scss)$/,
+      //   // chunks: 'all',
+      //   chunks: 'async',
+      //   // chunks: 'initial',
+      //   enforce: true
+      // }
       // ------------------------------------
     }
   },
@@ -248,9 +286,14 @@ configuration.plugins.push(
   new MiniCssExtractPlugin({
     // For long term caching (according to 'mini-css-extract-plugin' docs)
     filename: '[name].[contenthash].css',
-    // filename: '[name].[contenthash].css.css',
     // chunkFilename: '[name].[contenthash].chunk.css',
   }),
+
+  // https://webpack.js.org/plugins/internal-plugins/#occurenceorderplugin
+  // Order the modules and chunks by occurrence. 
+  // This saves space, because often referenced modules and chunks get smaller ids.
+  // preferEntry If true, references in entry chunks have higher priority
+  // new webpack.optimize.OccurrenceOrderPlugin(),
 
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': '"production"',
@@ -287,15 +330,15 @@ configuration.plugins.push(
     navigateFallback: '/dist/index.html'
   }),
 
-  new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-    reportFilename: '../../analyzers/bundleAnalyzer/client-production.html',
-    // analyzerMode: 'server',
-    // analyzerPort: 8888,
-    // defaultSizes: 'parsed',
-    openAnalyzer: false,
-    generateStatsFile: false
-  })
+  // new BundleAnalyzerPlugin({
+  //   analyzerMode: 'static',
+  //   reportFilename: '../../analyzers/bundleAnalyzer/client-production.html',
+  //   // analyzerMode: 'server',
+  //   // analyzerPort: 8888,
+  //   // defaultSizes: 'parsed',
+  //   openAnalyzer: false,
+  //   generateStatsFile: false
+  // })
 );
 
 // console.log('>>>>>>>>>>>>>>>>>>> WCCPB CLIENT configuration: ', configuration)

@@ -4,8 +4,6 @@ import serialize from 'serialize-javascript';
 import Helmet from 'react-helmet';
 import config from '../../config/config';
 
-// const testCss = /css.css/;
-
 const Html = ({ assets, store, content, bundles }) => {
 
   // console.log('#######################>>>>>> HTML.JS > assets: ', assets);
@@ -79,7 +77,6 @@ const Html = ({ assets, store, content, bundles }) => {
         {assets.javascript && <script src={assets.javascript.main} charSet="UTF-8" />}
 
         {bundles.map(bundle => bundle && <script src={config.assetsPath + bundle.file} key={bundle.id} />)}
-        {/* {bundles.map(bundle => testCss.test(bundle) && bundle && <script src={config.assetsPath + bundle.file} key={bundle.id} />)} */}
 
         {/* (will be present only in development mode) */}
         {assets.styles && Object.keys(assets.styles).length === 0 ? (

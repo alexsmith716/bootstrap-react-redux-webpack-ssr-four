@@ -276,6 +276,10 @@ class App extends Component {
 
                 <p className="color-orangered font-opensans-bold-webfont">This paragraph's '@font-face' is 'OpenSans-Bold-webfont' It is scoped Global.</p>
 
+                <p className={stylesCss1.colorCrimsonCssLocal}>This paragraph's color is 'colorCrimsonCssLocal'. It is scoped Local fom 'AppCss1.css'.</p>
+
+                <p className={stylesScss2.coloredText2Local}>This paragraph's color is 'coloredText2Local'. It is scoped Local fom 'AppScss2.scss'.</p>
+
               </div>
 
               <div className="modal-footer">
