@@ -32,6 +32,7 @@ function installVendorDLL(config, dllName) {
 
 function loadDLLManifest(filePath) {
   try {
+    console.log('>>>>>>>>>>>> dllreferenceplugin > loadDLLManifest > GOOD <<<<<<<<<<<<<<<');
     return require(filePath);
   }
   catch (e) {
