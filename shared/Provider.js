@@ -38,9 +38,6 @@ const Provider = withContext(
   ({ app }) => ({ app })                                // function that returns the child context
 )(ReduxProvider);
 
-
-console.log('>>>>>>>>>>>>>>>>>>> Provider > withContext > Provider: ', Provider);
-
 export default Provider;
 
 // https://reactjs.org/docs/context.html

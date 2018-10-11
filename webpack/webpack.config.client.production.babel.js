@@ -289,7 +289,7 @@ configuration.plugins.push(
 
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',
-    reportFilename: '../../analyzers/bundleAnalyzer/client-development.html',
+    reportFilename: '../../analyzers/bundleAnalyzer/client-production.html',
     // analyzerMode: 'server',
     // analyzerPort: 8888,
     // defaultSizes: 'parsed',
