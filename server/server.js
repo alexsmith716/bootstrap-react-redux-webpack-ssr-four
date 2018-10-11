@@ -476,23 +476,24 @@ export default function (parameters) {
 
       const bundles = getBundles(getChunks(), modules);
 
-      console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (webpack-compiled chunks) > ASSETS: ', webpackAssets);
-      console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > STORE1: ', store);
-      console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > STORE2: ', store.getState());
+      // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (webpack-compiled chunks) > ASSETS: ', webpackAssets);
+      // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > STORE1: ', store);
+      // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > STORE2: ', store.getState());
       // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (which modules were rendered) > MODULES : ', modules);
       // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (which modules were rendered) > CONTENT : ', content);
-      console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (convert rendered modules to bundles) > BUNDLES: ', bundles);
+      // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (convert rendered modules to bundles) > BUNDLES: ', bundles);
 
       const html = <Html assets={webpackAssets} store={store} content={content} bundles={bundles} />;
 
       console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > RESPOND TO CLIENT !! > STATUS 200 !! <<<<<<<<<<<<<<<<<<');
 
-      const moo = `<!doctype html>${ReactDOM.renderToString(html)}`;
-      console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > RESPOND TO CLIENT !! > STATUS 200 !! > moo:', moo);
+      const ssrHtml = `<!doctype html>${ReactDOM.renderToString(html)}`;
+
+      // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > RESPOND TO CLIENT !! > ReactDOM.renderToString(html):', ssrHtml);
 
       // render element to HTML && send HTTP response (ReactDOM.renderToString())
       // (allows search engines to crawl page for SEO purposes && enables faster page loads)
-      res.status(200).send(`<!doctype html>${ReactDOM.renderToString(html)}`);
+      res.status(200).send(ssrHtml);
 
       // ReactDOM.renderToStaticMarkup():
       // Similar to renderToString, except doesn't create extra DOM attributes

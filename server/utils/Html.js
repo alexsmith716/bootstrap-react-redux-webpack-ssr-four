@@ -8,11 +8,11 @@ import config from '../../config/config';
 
 const Html = ({ assets, store, content, bundles }) => {
 
-  console.log('#######################>>>>>> HTML.JS > assets: ', assets);
-  //console.log('>>>>>> HTML.JS > assets.styles length: ', Object.keys(assets.styles).length);
-  console.log('#######################>>>>>> HTML.JS > store: ', store);
-  //console.log('>>>>>> HTML.JS > content: ', content);
-  //console.log('>>>>>> HTML.JS > bundles: ', bundles);
+  // console.log('#######################>>>>>> HTML.JS > assets: ', assets);
+  // console.log('>>>>>> HTML.JS > assets.styles length: ', Object.keys(assets.styles).length);
+  // console.log('#######################>>>>>> HTML.JS > store: ', store);
+  // console.log('>>>>>> HTML.JS > content: ', content);
+  // console.log('>>>>>> HTML.JS > bundles: ', bundles);
 
   const head = Helmet.renderStatic();
 
@@ -73,6 +73,7 @@ const Html = ({ assets, store, content, bundles }) => {
         {/* {assets.javascript && <script src={assets.javascript.runtime} charSet="UTF-8" />} */}
         {/* {assets.javascript && <script src={assets.javascript.vendor} charSet="UTF-8" />} */}
 
+        {/* (will be present only in development mode) */}
         { __DLLS__ && <script key="dlls__vendor" src="/dist/dlls/dll__vendor.js" charSet="UTF-8" /> }
 
         {assets.javascript && <script src={assets.javascript.main} charSet="UTF-8" />}

@@ -189,7 +189,7 @@ configuration.plugins.push(
 // ==============================================================================================
 
 // console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG >>>>>>>>>>>>>>>: ', configuration);
-// console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG MAIN!! >>>>>>>>>: ', configuration.entry.main);
+// console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG MAIN >>>>>>>>>: ', configuration.entry.main);
 // console.log('>>>>>>>>>>>>>> WEBPACK DEV > CONFIG RULES >>>>>>>>>: ', configuration.module.rules);
 
 if (process.env.WEBPACK_DLLS === '1' && validDLLs) {
