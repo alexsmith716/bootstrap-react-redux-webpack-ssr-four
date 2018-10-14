@@ -146,6 +146,7 @@
     "eventsource-polyfill": "^0.9.6",
     "exports-loader": "^0.7.0",
     "expose-loader": "^0.7.5",
+    "extract-css-chunks-webpack-plugin": "^3.2.0",
     "feathers-hooks-common": "^4.17.10",
     "file-loader": "^2.0.0",
     "flow-bin": "^0.77.0",
@@ -192,6 +193,7 @@
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
+    "webpack-flush-chunks": "^2.0.3",
     "webpack-hot-middleware": "^2.24.3"
   },
   "husky": {
