@@ -6,11 +6,11 @@ import config from '../../config/config';
 
 const Html = ({ assets, store, content, bundles }) => {
 
-  // console.log('#######################>>>>>> HTML.JS > assets: ', assets);
+  console.log('>>>>>> HTML.JS > assets: ', assets);
   // console.log('>>>>>> HTML.JS > assets.styles length: ', Object.keys(assets.styles).length);
   // console.log('#######################>>>>>> HTML.JS > store: ', store);
   // console.log('>>>>>> HTML.JS > content: ', content);
-  // console.log('>>>>>> HTML.JS > bundles: ', bundles);
+  console.log('>>>>>> HTML.JS > bundles: ', bundles);
 
   const head = Helmet.renderStatic();
 

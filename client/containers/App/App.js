@@ -210,6 +210,7 @@ class App extends Component {
                     <Link to='/about-one' className="dropdown-item js-scroll-trigger">AboutOne</Link>
                     <Link to='/about-two' className="dropdown-item js-scroll-trigger">AboutTwo</Link>
                     <Link to='/about-three' className="dropdown-item js-scroll-trigger">AboutThree</Link>
+                    <Link to='/about-four' className="dropdown-item js-scroll-trigger">AboutFour</Link>
                   </div>
                 </li>
               </ul>

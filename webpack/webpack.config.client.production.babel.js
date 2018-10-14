@@ -14,7 +14,7 @@ const { clientConfiguration } = require('universal-webpack');
 const settings = require('./universal-webpack-settings');
 const configuration = require('./webpack.config');
 
-const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 const bundleAnalyzerPath = path.resolve(configuration.context, './build/analyzers/bundleAnalyzer');
 const assetsPath = path.resolve(configuration.context, './build/static/dist');
@@ -113,7 +113,7 @@ configuration.module.rules.push(
         options: {
           modules: true,
           localIdentName: '[name]__[local]__[hash:base64:5]',
-          importLoaders: 3,
+          importLoaders: 2,
           sourceMap: true,
         }
       },

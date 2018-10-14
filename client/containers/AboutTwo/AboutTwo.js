@@ -10,12 +10,13 @@ class AboutToo extends Component {
 
     const aboutImageMain = require('../../assets/images/about-750-450.png');
     const aboutImageOurCustomers = require('../../assets/images/about-500-300.png');
+    const styles = require('./scss/AboutTwo.scss');
 
     return (
 
       <div className="container">
 
-        <h1 className="mt-4 mb-3">About Too</h1>
+        <h1 className={`mt-4 mb-3 ${styles.uniqueColor}`}>About Two</h1>
 
         <div className="row">
           <div className="col-lg-6">

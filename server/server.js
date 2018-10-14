@@ -474,7 +474,11 @@ export default function (parameters) {
 
       // ------------------------------------------------------------------------------------------------------
 
+      // How do I handle other styles .css or sourcemaps .map with server-side rendering?
+      // https://github.com/jamiebuilds/react-loadable#how-do-i-handle-other-styles-css-or-sourcemaps-map-with-server-side-rendering
       const bundles = getBundles(getChunks(), modules);
+
+      let scripts = bundles.filter(bundle => bundle.file.endsWith('.js') || bundle.file.endsWith('.map'));
 
       // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (webpack-compiled chunks) > ASSETS: ', webpackAssets);
       // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > STORE1: ', store);
@@ -483,7 +487,7 @@ export default function (parameters) {
       // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (which modules were rendered) > CONTENT : ', content);
       // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > (convert rendered modules to bundles) > BUNDLES: ', bundles);
 
-      const html = <Html assets={webpackAssets} store={store} content={content} bundles={bundles} />;
+      const html = <Html assets={webpackAssets} store={store} content={content} bundles={scripts} />;
 
       console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > RESPOND TO CLIENT !! > STATUS 200 !! <<<<<<<<<<<<<<<<<<');
 
