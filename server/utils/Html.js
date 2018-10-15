@@ -17,14 +17,12 @@ const Html = ({ assets, store, content, bundles }) => {
   return (
     <html lang="en-US">
       <head>
-        {/* (>>>>>>> META <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<) */}
         {head.base.toComponent()}
         {head.title.toComponent()}
         {head.meta.toComponent()}
         {head.link.toComponent()}
         {head.script.toComponent()}
-        <meta charSet="UTF-8"/>
-        {/* <base href="/" /> */}
+
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -36,7 +34,7 @@ const Html = ({ assets, store, content, bundles }) => {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
 
-        {/* (>>>>>>> STYLES - will be physically present only in production) */}
+        {/* (>>>>>>> STYLES - will be present only in production) */}
         {assets.styles 
           && Object.keys(assets.styles).map(style => (
             <link

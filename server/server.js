@@ -474,8 +474,6 @@ export default function (parameters) {
 
       // ------------------------------------------------------------------------------------------------------
 
-      // How do I handle other styles .css or sourcemaps .map with server-side rendering?
-      // https://github.com/jamiebuilds/react-loadable#how-do-i-handle-other-styles-css-or-sourcemaps-map-with-server-side-rendering
       const bundles = getBundles(getChunks(), modules);
 
       let scripts = bundles.filter(bundle => bundle.file.endsWith('.js') || bundle.file.endsWith('.map'));

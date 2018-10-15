@@ -289,6 +289,14 @@ configuration.plugins.push(
     // chunkFilename: '[name].[contenthash].chunk.css',
   }),
 
+  // post-process your chunks by merging them
+  // https://webpack.js.org/plugins/limit-chunk-count-plugin/
+  // will create 1 css chunk ('main.css')
+  new webpack.optimize.LimitChunkCountPlugin({
+    maxChunks: 1,
+    // minChunkSize: 1000
+  }),
+
   // https://webpack.js.org/plugins/internal-plugins/#occurenceorderplugin
   // Order the modules and chunks by occurrence. 
   // This saves space, because often referenced modules and chunks get smaller ids.
